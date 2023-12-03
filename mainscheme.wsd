@@ -1,0 +1,96 @@
+@startuml ОсновнаяСхемаИдеи
+
+' left to right direction
+' allowmixing
+
+skinparam sequence {
+   ArrowColor Red
+}
+
+skinparam usecase {
+    BackgroundColor LightPink
+}
+
+skinparam note {
+    BackgroundColor LightBlue
+}
+
+skinparam rectangle {
+    BackgroundColor LightGray
+}
+
+!define v8_PUML https://raw.githubusercontent.com/plastinin/1ce-icons-for-plantuml/extended/dist/
+!include v8_PUML/common.puml
+!include v8_PUML/v8_AccRg.puml
+!include v8_PUML/v8_Document.puml
+!include v8_PUML/v8_Catalog.puml
+!include v8_PUML/v8_InfoRg.puml
+!include v8_PUML/v8_ChartsOfCharacteristicTypes.puml
+!include v8_PUML/v8_DefinedTypes.puml
+!include v8_PUML/v8_Enum.puml
+!include <tupadr3/common>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/database>
+!include <tupadr3/font-awesome/file_excel_o>
+!include <tupadr3/font-awesome/mobile>
+!include <tupadr3/font-awesome/safari>
+!include <tupadr3/font-awesome/wpforms>
+
+Title **ОсновнаяСхемаИдеи** 
+Caption Схема 
+' Доступные команды:
+' функция | функция с пояснением
+' подпроцесс
+' событие
+' пояснение
+' условие
+' стрелка вниз
+' стрелка вверх
+' стрелка вправо
+' стрелка влево
+' терминатор
+' 
+_Справочник(НДВИ, "Данные NDVI местности со спутника"){
+   + За несколько лет
+   + Разбитые по сезонам (весна, лето, осень, зима - для оценки снежного покрова озимых?)
+}
+
+_Справочник(Поля, "Список полей с координатами"){
+   + Можно получить анализируя снимки спутника. Сейчас много кто уже это умеет
+   + Можно получить у тех, у кого они есть и ввести вручную
+}
+
+_Справочник(Размещения, "История размещения культур"){
+   + Разбивка по годам где и какая культура выращивалась 
+   (OneSoil умеют это определять автоматически для 12 основных культур)
+}
+
+usecase Ф.1 #AAFFAA as "
+По анализу НДВИ в разрезе исторических данных
+сделать предположения о правильном севообороте
+====
+Ф-001"
+
+_Справочник(Погода, "Погодные условия до посадки, по каждому году"){
+   Для уточнения генерации прогноза
+}  
+
+usecase С.1 as "Поля
+ убраны"
+
+usecase Ф.2 #AAFFAA as "
+Получить данные по результатам
+и дообучить модель
+====
+Ф-002"
+
+Погода -d-> Ф.1
+НДВИ -r-> Ф.1
+Поля -l-> Ф.1
+Размещения -d-> Ф.1
+Ф.1 -d-> С.1
+С.1 -d-> Ф.2
+Ф.2 --> Ф.1
+
+
+@enduml
