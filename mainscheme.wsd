@@ -1,4 +1,4 @@
-@startuml ОсновнаяСхемаИдеи
+@startuml main
 
 ' left to right direction
 ' allowmixing

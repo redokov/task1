@@ -7,4 +7,4 @@
 * exactfarming.com
 * Как считать НДВИ https://gis-lab.info/qa/ndvi.html  
 
-![](out\mainscheme\ОсновнаяСхемаИдеи.png)
+![](out\mainscheme\Main.png)
