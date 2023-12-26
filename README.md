@@ -84,3 +84,4 @@
 * https://www.youtube.com/watch?v=0gPh18vRghQ - Scrape any website with OpenAI Functions & LangChain
 * https://huggingface.co/TheBloke
 * https://www.youtube.com/watch?v=dXxQ0LR-3Hg - Chat with Multiple PDFs | LangChain App Tutorial in Python (Free LLMs and Embeddings)
+* gdal_merge.py - Mosaics a set of images https://gdal.org/programs/gdal_merge.html
